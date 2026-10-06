@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.models import IncidentRequest
 
 app = FastAPI(title="AI Incident Investigation Agent")
 
@@ -9,5 +10,9 @@ def health():
 
 
 @app.post("/investigate")
-def investigate():
-    return {"status": "investigation_started"}
+def investigate(incident: IncidentRequest):
+    return {
+        "service": incident.service,
+        "description": incident.description,
+        "status": "investigation_started"
+    }
