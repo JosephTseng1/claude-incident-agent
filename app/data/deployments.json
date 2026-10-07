@@ -1,0 +1,8 @@
+[
+  {
+    "service": "checkout",
+    "version": "v2.4.1",
+    "deployed_at": "2026-10-05T17:40:00Z",
+    "change": "Reduced database connection pool from 50 to 10"
+  }
+]

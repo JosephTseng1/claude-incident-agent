@@ -1,0 +1,12 @@
+[
+  {
+    "service": "checkout",
+    "level": "ERROR",
+    "message": "Database connection pool exhausted"
+  },
+  {
+    "service": "checkout",
+    "level": "ERROR",
+    "message": "Request timed out after 5000ms"
+  }
+]

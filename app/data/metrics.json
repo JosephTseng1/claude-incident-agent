@@ -1,0 +1,8 @@
+{
+  "checkout": {
+    "error_rate": 0.18,
+    "latency_p95_ms": 6200,
+    "cpu_percent": 42,
+    "db_pool_utilization": 100
+  }
+}
