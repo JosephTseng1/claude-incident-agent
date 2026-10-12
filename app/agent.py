@@ -4,6 +4,7 @@ import os
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
+from app.models import IncidentReport
 from app.tools import (
     search_logs,
     get_metric,
@@ -99,14 +100,21 @@ client = Anthropic(
 )
 
 
-def ask_claude(service: str, description: str):
+def ask_claude(service: str, description: str) -> IncidentReport:
     messages = [
         {
             "role": "user",
             "content": (
-                f"Investigate this service incident.\n"
+                "Investigate this service incident.\n"
                 f"Service: {service}\n"
-                f"Description: {description}"
+                f"Description: {description}\n\n"
+                "After investigating, return ONLY a valid JSON object "
+                "with these fields:\n"
+                "- severity: string\n"
+                "- likely_root_cause: string\n"
+                "- evidence: array of strings\n"
+                "- recommended_actions: array of strings\n"
+                "Do not include Markdown formatting or code fences."
             ),
         }
     ]
@@ -146,7 +154,7 @@ def ask_claude(service: str, description: str):
 
         for block in message.content:
             if block.type == "text":
-                return block.text
+                return IncidentReport.model_validate_json(block.text)
 
         raise RuntimeError("Claude returned no text response.")
 
