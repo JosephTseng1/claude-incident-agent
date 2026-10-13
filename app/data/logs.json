@@ -8,5 +8,20 @@
     "service": "checkout",
     "level": "ERROR",
     "message": "Request timed out after 5000ms"
+  },
+  {
+    "service": "auth",
+    "level": "ERROR",
+    "message": "Authentication request timed out"
+  },
+  {
+    "service": "auth",
+    "level": "ERROR",
+    "message": "Upstream identity provider request exceeded timeout"
+  },
+  {
+    "service": "auth",
+    "level": "WARN",
+    "message": "Login request latency is elevated"
   }
 ]

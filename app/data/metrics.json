@@ -4,5 +4,10 @@
     "latency_p95_ms": 6200,
     "cpu_percent": 42,
     "db_pool_utilization": 100
+  },
+  "auth": {
+    "error_rate": 0.12,
+    "latency_p99_ms": 4200,
+    "request_count": 15000
   }
 }
